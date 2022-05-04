@@ -13,9 +13,7 @@ dotenv.config()
 connectDB();
 app.use(cors())
 
-app.get('/', (req, res) => {
-  res.send('API is running...')
-})
+
 
 app.use('/api/events', eventRoutes);
 app.use('/api/users', userRoutes);
