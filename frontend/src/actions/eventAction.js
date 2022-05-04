@@ -22,7 +22,7 @@ export const listEvents = () => async (dispatch) => {
   try {
     dispatch({type :EVENT_LIST_REQUEST });
 
-    const { data } = await axios.get("http://localhost:5000/api/events");
+    const { data } = await axios.get("/api/events");
     
     
     dispatch({
@@ -44,7 +44,7 @@ export const listEventDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: EVENT_DETAILS_REQUEST });
 
-    const { data } = await axios.get( `http://localhost:5000/api/events/${id}`);
+    const { data } = await axios.get( `/api/events/${id}`);
 
     dispatch({
       type: EVENT_DETAILS_SUCCESS,
@@ -81,7 +81,7 @@ export const addEvent=(name,description,time,place)=>async(dispatch,getState)=>{
           },
         }
       
-      const {data}=await axios.post(`http://localhost:5000/api/events/addEvent`,{name,description,time,place},config)
+      const {data}=await axios.post(`/api/events/addEvent`,{name,description,time,place},config)
       
 
       dispatch({
@@ -120,7 +120,7 @@ export const findMyEvents=()=>async(dispatch,getState)=>{
           },
         }
       
-      const {data}=await axios.get(`http://localhost:5000/api/myevents`,config)
+      const {data}=await axios.get(`/api/myevents`,config)
 
     
 
