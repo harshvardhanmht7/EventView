@@ -69,8 +69,27 @@ const getEventById=  asyncHandler(async (req, res) => {
 
 
 
+  const myEvents=asyncHandler(async(req,res)=>{
+
+   try {
+    const data=await Event.find({user:req.user.id})
+    
+    res.status(200)
+    res.json(data)
+     
+   } catch (error) {
+    res.status(401)
+    throw new Error('Error in fetching events')
+   }
+   
+
+  })
+
+
+
 export {
     getEventById,
     getEvents,
-    addEvent
+    addEvent,
+    myEvents
 }

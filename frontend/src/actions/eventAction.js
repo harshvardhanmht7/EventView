@@ -9,7 +9,9 @@ import {
   ADD_EVENT_REQUEST,
   ADD_EVENT_SUCCESS,
   CLEAR_EVENT,
-  REMOVE_EVENT
+  REMOVE_EVENT,
+  MY_EVENTS_REQUEST,
+  MY_EVENTS_SUCCESS
   
 } from "../constants/eventConstant";
 
@@ -20,7 +22,7 @@ export const listEvents = () => async (dispatch) => {
   try {
     dispatch({type :EVENT_LIST_REQUEST });
 
-    const { data } = await axios.get("/api/events");
+    const { data } = await axios.get("http://localhost:5000/api/events");
     
     
     dispatch({
@@ -42,7 +44,7 @@ export const listEventDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: EVENT_DETAILS_REQUEST });
 
-    const { data } = await axios.get( `/api/events/${id}`);
+    const { data } = await axios.get( `http://localhost:5000/api/events/${id}`);
 
     dispatch({
       type: EVENT_DETAILS_SUCCESS,
@@ -62,6 +64,7 @@ export const listEventDetails = (id) => async (dispatch) => {
 
 
 export const addEvent=(name,description,time,place)=>async(dispatch,getState)=>{
+ 
 
   try {
 
@@ -78,7 +81,7 @@ export const addEvent=(name,description,time,place)=>async(dispatch,getState)=>{
           },
         }
       
-      const {data}=await axios.post(`/api/events/addEvent`,{name,description,time,place},config)
+      const {data}=await axios.post(`http://localhost:5000/api/events/addEvent`,{name,description,time,place},config)
       
 
       dispatch({
@@ -93,6 +96,42 @@ export const addEvent=(name,description,time,place)=>async(dispatch,getState)=>{
 
   } catch (error) {
       console.log('error while adding an event')
+      
+  }
+
+} 
+
+
+
+
+export const findMyEvents=()=>async(dispatch,getState)=>{
+ 
+  try {
+
+      dispatch({
+          type:MY_EVENTS_REQUEST
+      })
+   
+      const  {userLogin:{userInfo}}=getState()
+
+      const config = {
+          headers: {
+            Authorization:`${userInfo.token}`
+          },
+        }
+      
+      const {data}=await axios.get(`http://localhost:5000/api/myevents`,config)
+
+    
+
+      dispatch({
+          type:MY_EVENTS_SUCCESS,
+          payload:data
+      })
+     
+
+  } catch (error) {
+      console.log('error while fetching all events from action !')
       
   }
 

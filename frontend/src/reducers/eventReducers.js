@@ -4,7 +4,7 @@ import {
    EVENT_LIST_FAIL,
    EVENT_DETAILS_SUCCESS,
    EVENT_DETAILS_FAIL,
-   ADD_EVENT_REQUEST,ADD_EVENT_SUCCESS,REMOVE_EVENT, CLEAR_EVENT
+   ADD_EVENT_REQUEST,ADD_EVENT_SUCCESS,REMOVE_EVENT, CLEAR_EVENT, MY_EVENTS_REQUEST, MY_EVENTS_SUCCESS
 } from '../constants/eventConstant'
 
 
@@ -49,6 +49,18 @@ export const eventAddReducer = (state = {}, action) => {
       return { }
     case REMOVE_EVENT:
       return { loading: false, error: action.payload }
+    
+    default:
+      return state
+  }
+}
+
+export const myEventsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case MY_EVENTS_REQUEST:
+      return { loading: true }
+    case MY_EVENTS_SUCCESS:
+      return { loading: false, events: action.payload }
     
     default:
       return state

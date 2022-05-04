@@ -4,7 +4,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   eventListReducer,
   eventDetailsReducer,
-  eventAddReducer
+  eventAddReducer,
+  myEventsReducer
 } from "./reducers/eventReducers";
 
 import {
@@ -17,7 +18,7 @@ import {
 const reducer = combineReducers({
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
-  
+  myEvents    :myEventsReducer,
   eventAdd:eventAddReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,

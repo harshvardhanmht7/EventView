@@ -9,6 +9,7 @@ import AddEventScreen from './screens/AddEventScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import MyEventsScreen from './screens/MyEventsScreen'
 const App=()=> {
   return (
     <Router>
@@ -22,6 +23,7 @@ const App=()=> {
 
      < Route path="/event/:id" element={<EventScreen/>} exact />
      < Route path="/addEvent" element={<AddEventScreen/>} exact />
+     < Route path="/myevents" element={<MyEventsScreen/>} exact />
      < Route path="/" element={<HomeScreen/>} exact />
      
      </Routes>

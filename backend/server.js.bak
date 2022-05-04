@@ -2,7 +2,6 @@ import express  from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import eventRoutes from './routes/eventRoutes.js'
-import   myEventsRoutes    from './routes/myEventsRoutes.js'
 import  userRoutes from './routes/userRoutes.js'
 import  path from 'path'
 import {notFound,errorHandler} from './middleware/errorMiddleware.js'
@@ -17,7 +16,6 @@ app.use(cors())
 
 
 app.use('/api/events', eventRoutes);
-app.use('/api/myevents', myEventsRoutes);
 app.use('/api/users', userRoutes);
 
 const __dirname = path.resolve()

@@ -1,8 +1,8 @@
-import React, { useEffect,useReducer,useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import {Navigate, useParams} from 'react-router-dom'
+
 import { getUserDetails,updateUserDetails } from '../actions/userAction'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import Message from '../components/Message'
 import Loader from '../components/Loader'

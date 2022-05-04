@@ -28,10 +28,16 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <LinkContainer to="/addEvent">
+              {userInfo&& <LinkContainer to="/addEvent">
                 <Nav.Link className="fa-solid fa-calendar-check">Add Event</Nav.Link>
                 
-              </LinkContainer>
+              </LinkContainer>}
+
+              {userInfo&& <LinkContainer to="/myevents">
+                <Nav.Link className="fa-solid fa-calendar-check">My Events</Nav.Link>
+                
+              </LinkContainer>}
+             
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                 <LinkContainer to={`profile`}>
